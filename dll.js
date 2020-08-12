@@ -49,6 +49,14 @@ class DoublyLinkedList {
         return this;
     }
 
+    set(){
+
+    }
+
+    insert() {
+
+    }
+
 
     //remove
 
@@ -86,8 +94,42 @@ class DoublyLinkedList {
         return deletedItem;
     }
 
-   
+   remove(){
+       
+   }
 
 
     //read
+
+    get(index) {
+        if (this.length === 0 || index < 0 || index > this.length - 1 ) return undefined;
+        let midpoint = Math.ceil(this.length / 2);
+        if (index < midpoint) {
+            return this.traverseForward(index);
+        } else {
+            return this.traverseBackward(index);
+        }
+    }
+
+    //helpers
+
+    traverseForward(index){
+        let i = 0;
+        let currentNode = this.head;
+        while ( i < index ) {
+            currentNode = currentNode.next;
+            i++;
+        }
+        return currentNode;
+    }
+
+    traverseBackward(index){
+        let i = this.length-1;
+        let currentNode = this.tail;
+        while ( i > index ) {
+            currentNode = currentNode.prev;
+            i--;
+        } 
+        return currentNode;
+    }
 }
